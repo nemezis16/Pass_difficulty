@@ -9,16 +9,19 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, CellStateSize) {
-    CellStateSizeLow = 70,
-    CellStateSizeMedium = 80,
-    CellStateSizeHigh = 110,
+    CellStateSizeLow = 30,
+    CellStateSizeMedium = 50,
+    CellStateSizeHigh = 80,
 };
 
 @protocol CheckPassTableViewCellDelegate <NSObject>
 
+@required
 - (void)validateTextFieldDidBeginEditing:(UITextField *)textField;
-- (void)validateTextFieldDidEndEditing:(UITextField *)textField;
 - (void)validateTextFieldDidChangeCharacters:(UITextField *)sender;
+
+@optional
+- (void)validateTextFieldDidEndEditing:(UITextField *)textField;
 
 @end
 

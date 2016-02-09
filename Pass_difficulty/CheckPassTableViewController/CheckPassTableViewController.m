@@ -1,13 +1,20 @@
 //
-//  CheckPassTableViewCell.m
+//  CheckPassTableViewController.m
 //  Pass_difficulty
 //
-//  Created by Roman Osadchuk on 01.02.16.
+//  Created by Roman Osadchuk on 09.02.16.
 //  Copyright © 2016 Roman Osadchuk. All rights reserved.
 //
 
-#import "CheckPassTableViewCell.h"
+#import "CheckPassTableViewController.h"
+
 #import "CALayer+CAShapeLayer.h"
+
+typedef NS_ENUM(NSUInteger, CellStateSize) {
+    CellStateSizeLow = 30,
+    CellStateSizeMedium = 50,
+    CellStateSizeHigh = 80,
+};
 
 static NSInteger const typeStepForIndicator = 3;
 
@@ -18,7 +25,7 @@ static CGFloat const shapeLineWidth = 8.f;
 static CGFloat const alphaAnimationDuration = 0.3f;
 static CGFloat const strokeAnimationDuration = 0.1f;
 
-@interface CheckPassTableViewCell ()
+@interface CheckPassTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *validateTextField;
 @property (weak, nonatomic) IBOutlet UIView *indicatorContainerView;
@@ -27,30 +34,37 @@ static CGFloat const strokeAnimationDuration = 0.1f;
 
 @property (strong, nonatomic) NSMutableArray *indicatorLayersArray;
 
+@property (strong, nonatomic) NSArray <UIColor *> *colorIndicatorArray;
+@property (strong, nonatomic) NSArray <NSString *> *commentTextArray;
+
+@property (assign, nonatomic) CellStateSize cellStateSize;
+
 @end
 
-@implementation CheckPassTableViewCell
+@implementation CheckPassTableViewController
 @synthesize colorIndicatorArray = _colorIndicatorArray;
 
 #pragma mark - LifeCycle
 
-- (void)prepareForReuse
+- (void)viewDidLoad
 {
-    [super prepareForReuse];
-    
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
-    self.validateTextField.text = @"";
-    self.commentLabel.text = @"";
-    [self addAnimationToShowIndicators:NO];
-}
-
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
+    [super viewDidLoad];
     
     [self prepareIndicators];
     [self prepareInitialState];
     [self addObserverToIndicators];
+}
+
+//
+//self.firstIndicator.layer.name = [[UIColor redColor].description stringByAppendingString:@"0"];
+//[self.indicatorLayersArray addObject:self.firstIndicator.layer];
+//[self.indicatorLayersArray addObject:self.secondIndicator.layer];
+//[self.indicatorLayersArray addObject:self.thirdIndicator.layer];
+//[self.indicatorLayersArray addObject:self.fourthIndicator.layer];
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 #pragma mark - Accessors
@@ -85,29 +99,33 @@ static CGFloat const strokeAnimationDuration = 0.1f;
 
 - (IBAction)validateTextFieldDidBeginEditing:(id)sender
 {
-    if (!self.commentIndicatorContainerView.layer.opacity) {
-        [self addAnimationToShowIndicators:YES];
-    }
-    
-    if ([self.delegate respondsToSelector:@selector(validateTextFieldDidBeginEditing:)] && self.delegate) {
-        [self.delegate validateTextFieldDidBeginEditing:sender];
-    }
+    [self showIfBeginEditing];
 }
 
 - (IBAction)validateTextFieldDidEndEditing:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(validateTextFieldDidEndEditing:)] && self.delegate) {
-        [self.delegate validateTextFieldDidEndEditing:sender];
-    }
+
 }
 
 - (IBAction)validateTextFieldDidChangeCharacters:(UITextField *)sender
 {
     NSInteger lenght = sender.text.length;
     [self configureIndicatorsWithTextLenght:lenght];
-    
-    if ([self.delegate respondsToSelector:@selector(validateTextFieldDidChangeCharacters:)] && self.delegate) {
-        [self.delegate validateTextFieldDidChangeCharacters:sender];
+}
+
+#pragma mark - UITableViewDataSource
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case 1: {
+            return (CGFloat)self.cellStateSize;
+            break;
+        }
+        default: {
+            return (CGFloat)CellStateSizeLow;
+            break;
+        }
     }
 }
 
@@ -116,8 +134,6 @@ static CGFloat const strokeAnimationDuration = 0.1f;
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
     if ([keyPath isEqualToString:@"bounds"]){
-        [self setNeedsLayout];
-        [self layoutIfNeeded];
         [self updateIndicators];
     }
 }
@@ -139,6 +155,26 @@ static CGFloat const strokeAnimationDuration = 0.1f;
     }
 }
 
+- (void)prepareInitialState
+{
+    self.cellStateSize = CellStateSizeLow;
+    self.commentIndicatorContainerView.layer.opacity = 0.f;
+    self.commentLabel.layer.opacity = 0.f;
+}
+
+- (void)showIfBeginEditing
+{
+    if (!self.commentIndicatorContainerView.layer.opacity) {
+        [self addAnimationToShowIndicators:YES];
+    }
+    
+    if (self.cellStateSize == CellStateSizeLow) {
+        self.cellStateSize = CellStateSizeMedium;
+    }
+    
+    [self reloadTableViewCells];
+}
+
 - (void)configureIndicatorsWithTextLenght:(NSInteger)lenght
 {
     if (lenght && !self.commentLabel.layer.opacity) {
@@ -149,6 +185,9 @@ static CGFloat const strokeAnimationDuration = 0.1f;
     
     [self progressAnimationsWithTextLenght:lenght];
     [self regressAnimationsWithTextLenght:lenght];
+    
+    self.cellStateSize = lenght ? CellStateSizeHigh : CellStateSizeMedium;
+    [self reloadTableViewCells];
 }
 
 - (void)updateIndicators
@@ -235,13 +274,6 @@ static CGFloat const strokeAnimationDuration = 0.1f;
     [self.commentLabel.layer addAnimation:alphaAnimation forKey:nil];
 }
 
-- (void)hideCommentLabelWithAnimation
-{
-    CABasicAnimation *alphaAnimation = [self alphaAnimationFromValue:1.f toValue:0.f duration:alphaAnimationDuration * 3];
-    self.commentLabel.layer.opacity = 0.f;
-    [self.commentLabel.layer addAnimation:alphaAnimation forKey:nil];
-}
-
 - (void)strokeEndAnimationWithIndicatorLayer:(CALayer *)layer CGColor:(CGColorRef)color
 {
     CABasicAnimation *pathAnimation = [self strokeAnimationFromValue:0 toValue:1 duration:strokeAnimationDuration strokeEnd:YES];
@@ -254,7 +286,7 @@ static CGFloat const strokeAnimationDuration = 0.1f;
 - (void)strokeStartAnimationWithIndicatorLayer:(CALayer *)layer
 {
     CABasicAnimation *pathAnimation = [self strokeAnimationFromValue:0 toValue:1 duration:strokeAnimationDuration strokeEnd:NO];
-
+    
     CAShapeLayer *shapeLayer = [layer shapeLayer];
     
     if (![shapeLayer animationForKey:@"strokeStart"]) {
@@ -297,7 +329,7 @@ static CGFloat const strokeAnimationDuration = 0.1f;
         
         for (int i = 0; i < self.indicatorLayersArray.count; i++) {
             if (i > countIndicator) {
-                 [self strokeStartAnimationWithIndicatorLayer:self.indicatorLayersArray[i]];
+                [self strokeStartAnimationWithIndicatorLayer:self.indicatorLayersArray[i]];
             }
         }
         if (!lenght) {
@@ -334,17 +366,18 @@ static CGFloat const strokeAnimationDuration = 0.1f;
     return pathAnimation;
 }
 
-#pragma mark - Additional methods
-
-- (void)prepareInitialState
-{
-    self.commentIndicatorContainerView.layer.opacity = 0.f;
-    self.commentLabel.layer.opacity = 0.f;
-}
+#pragma mark - AdditionalMethods
 
 - (void)addObserverToIndicators
 {
     [self.indicatorContainerView addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew context:nil];
 }
 
+- (void)reloadTableViewCells
+{
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+}
+
 @end
+

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CheckPassTableViewCell.h"
 
-@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CheckPassTableViewCellDelegate>
+@interface CheckPassViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CheckPassTableViewCellDelegate>
 
 @end
 

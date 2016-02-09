@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		A3451FF41C5FACB000D156CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A3451FF31C5FACB000D156CC /* main.m */; };
 		A3451FF71C5FACB000D156CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A3451FF61C5FACB000D156CC /* AppDelegate.m */; };
-		A3451FFA1C5FACB000D156CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3451FF91C5FACB000D156CC /* ViewController.m */; };
+		A3451FFA1C5FACB000D156CC /* CheckPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3451FF91C5FACB000D156CC /* CheckPassViewController.m */; };
 		A3451FFD1C5FACB000D156CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3451FFB1C5FACB000D156CC /* Main.storyboard */; };
 		A3451FFF1C5FACB000D156CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3451FFE1C5FACB000D156CC /* Assets.xcassets */; };
 		A34520021C5FACB000D156CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A34520001C5FACB000D156CC /* LaunchScreen.storyboard */; };
 		A345200D1C5FADA100D156CC /* CheckPassTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A345200B1C5FADA100D156CC /* CheckPassTableViewCell.m */; };
 		A345200E1C5FADA100D156CC /* CheckPassTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A345200C1C5FADA100D156CC /* CheckPassTableViewCell.xib */; };
 		A3F5B4BF1C68CC1C006CC0E9 /* CALayer+CAShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F5B4BE1C68CC1C006CC0E9 /* CALayer+CAShapeLayer.m */; };
+		A3F5B4C41C69F0AC006CC0E9 /* CheckPassTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F5B4C31C69F0AC006CC0E9 /* CheckPassTableViewController.m */; };
+		A3F5B4C91C6A3115006CC0E9 /* SecondCheckPassTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F5B4C81C6A3115006CC0E9 /* SecondCheckPassTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,8 +25,8 @@
 		A3451FF31C5FACB000D156CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A3451FF51C5FACB000D156CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A3451FF61C5FACB000D156CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A3451FF81C5FACB000D156CC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A3451FF91C5FACB000D156CC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A3451FF81C5FACB000D156CC /* CheckPassViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckPassViewController.h; sourceTree = "<group>"; };
+		A3451FF91C5FACB000D156CC /* CheckPassViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckPassViewController.m; sourceTree = "<group>"; };
 		A3451FFC1C5FACB000D156CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A3451FFE1C5FACB000D156CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A34520011C5FACB000D156CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -34,6 +36,10 @@
 		A345200C1C5FADA100D156CC /* CheckPassTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CheckPassTableViewCell.xib; path = CheckPassTableViewCell/CheckPassTableViewCell.xib; sourceTree = "<group>"; };
 		A3F5B4BD1C68CC1C006CC0E9 /* CALayer+CAShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CALayer+CAShapeLayer.h"; path = "Categories/CALayer+CAShapeLayer/CALayer+CAShapeLayer.h"; sourceTree = "<group>"; };
 		A3F5B4BE1C68CC1C006CC0E9 /* CALayer+CAShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CALayer+CAShapeLayer.m"; path = "Categories/CALayer+CAShapeLayer/CALayer+CAShapeLayer.m"; sourceTree = "<group>"; };
+		A3F5B4C21C69F0AC006CC0E9 /* CheckPassTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckPassTableViewController.h; path = CheckPassTableViewController/CheckPassTableViewController.h; sourceTree = "<group>"; };
+		A3F5B4C31C69F0AC006CC0E9 /* CheckPassTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckPassTableViewController.m; path = CheckPassTableViewController/CheckPassTableViewController.m; sourceTree = "<group>"; };
+		A3F5B4C71C6A3115006CC0E9 /* SecondCheckPassTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondCheckPassTableViewController.h; path = SecondCheckPassTableViewController/SecondCheckPassTableViewController.h; sourceTree = "<group>"; };
+		A3F5B4C81C6A3115006CC0E9 /* SecondCheckPassTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecondCheckPassTableViewController.m; path = SecondCheckPassTableViewController/SecondCheckPassTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,16 +72,16 @@
 		A3451FF11C5FACB000D156CC /* Pass_difficulty */ = {
 			isa = PBXGroup;
 			children = (
-				A3F5B4B81C68CAEC006CC0E9 /* Categories */,
-				A34520091C5FAD4300D156CC /* CheckPassTableVIewCell */,
+				A3F5B4C61C6A309B006CC0E9 /* SecondCheckPassTableViewController */,
+				A3F5B4C11C69F066006CC0E9 /* CheckPassTableViewController */,
+				A3F5B4C01C69EF82006CC0E9 /* CheckPassViewController */,
 				A3451FF51C5FACB000D156CC /* AppDelegate.h */,
 				A3451FF61C5FACB000D156CC /* AppDelegate.m */,
-				A3451FF81C5FACB000D156CC /* ViewController.h */,
-				A3451FF91C5FACB000D156CC /* ViewController.m */,
 				A3451FFB1C5FACB000D156CC /* Main.storyboard */,
 				A3451FFE1C5FACB000D156CC /* Assets.xcassets */,
 				A34520001C5FACB000D156CC /* LaunchScreen.storyboard */,
 				A34520031C5FACB000D156CC /* Info.plist */,
+				A3F5B4B81C68CAEC006CC0E9 /* Categories */,
 				A3451FF21C5FACB000D156CC /* Supporting Files */,
 			);
 			path = Pass_difficulty;
@@ -114,6 +120,34 @@
 				A3F5B4BE1C68CC1C006CC0E9 /* CALayer+CAShapeLayer.m */,
 			);
 			name = "CALayer+CAShapeLayer";
+			sourceTree = "<group>";
+		};
+		A3F5B4C01C69EF82006CC0E9 /* CheckPassViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A34520091C5FAD4300D156CC /* CheckPassTableVIewCell */,
+				A3451FF81C5FACB000D156CC /* CheckPassViewController.h */,
+				A3451FF91C5FACB000D156CC /* CheckPassViewController.m */,
+			);
+			name = CheckPassViewController;
+			sourceTree = "<group>";
+		};
+		A3F5B4C11C69F066006CC0E9 /* CheckPassTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A3F5B4C21C69F0AC006CC0E9 /* CheckPassTableViewController.h */,
+				A3F5B4C31C69F0AC006CC0E9 /* CheckPassTableViewController.m */,
+			);
+			name = CheckPassTableViewController;
+			sourceTree = "<group>";
+		};
+		A3F5B4C61C6A309B006CC0E9 /* SecondCheckPassTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A3F5B4C71C6A3115006CC0E9 /* SecondCheckPassTableViewController.h */,
+				A3F5B4C81C6A3115006CC0E9 /* SecondCheckPassTableViewController.m */,
+			);
+			name = SecondCheckPassTableViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,8 +223,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3F5B4BF1C68CC1C006CC0E9 /* CALayer+CAShapeLayer.m in Sources */,
-				A3451FFA1C5FACB000D156CC /* ViewController.m in Sources */,
+				A3451FFA1C5FACB000D156CC /* CheckPassViewController.m in Sources */,
 				A3451FF71C5FACB000D156CC /* AppDelegate.m in Sources */,
+				A3F5B4C41C69F0AC006CC0E9 /* CheckPassTableViewController.m in Sources */,
+				A3F5B4C91C6A3115006CC0E9 /* SecondCheckPassTableViewController.m in Sources */,
 				A3451FF41C5FACB000D156CC /* main.m in Sources */,
 				A345200D1C5FADA100D156CC /* CheckPassTableViewCell.m in Sources */,
 			);

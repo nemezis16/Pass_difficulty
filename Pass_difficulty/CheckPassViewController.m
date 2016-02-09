@@ -6,21 +6,20 @@
 //  Copyright © 2016 Roman Osadchuk. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "CheckPassViewController.h"
 
-static NSString *const CellIdentifier = @"loginCell";
+static NSString *const CellLoginIdentifier = @"loginCell";
+static NSString *const CellEmailIdentifier = @"emailCell";
 
-@interface ViewController ()
+@interface CheckPassViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-//@property (assign, nonatomic) BOOL validateFieldSelected;
 
 @property (assign, nonatomic) CellStateSize cellStateSize;
 
 @end
 
-@implementation ViewController
+@implementation CheckPassViewController
 
 #pragma mark - LifeCycle
 
@@ -36,22 +35,34 @@ static NSString *const CellIdentifier = @"loginCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 1) {
-        CheckPassTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CheckPassTableViewCell class])];
-        cell.delegate = self;
-//        cell.colorIndicatorArray = @[[UIColor blueColor],[UIColor greenColor],[UIColor greenColor],[UIColor brownColor],[UIColor blueColor],[UIColor greenColor],[UIColor greenColor],[UIColor brownColor]];
-        
-        return cell;
-    } else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        return cell;
+    UITableViewCell *cell;
+    
+    switch (indexPath.row) {
+        case 0: {
+            cell = [tableView dequeueReusableCellWithIdentifier:CellLoginIdentifier];
+            
+            break;
+        }
+        case 1: {
+            CheckPassTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CheckPassTableViewCell class])];
+            cell.delegate = self;
+            cell.colorIndicatorArray = @[[UIColor blueColor],[UIColor greenColor],[UIColor greenColor],[UIColor brownColor],[UIColor blueColor],[UIColor greenColor],[UIColor greenColor],[UIColor brownColor]];
+            
+            return cell;
+        }
+        case 2: {
+            cell = [tableView dequeueReusableCellWithIdentifier:CellEmailIdentifier];
+            
+            break;
+        }
     }
+    
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,25 +83,29 @@ static NSString *const CellIdentifier = @"loginCell";
 
 - (void)validateTextFieldDidBeginEditing:(UITextField *)textField
 {
+    [self showIfBeginEditing];
+}
+
+- (void)validateTextFieldDidChangeCharacters:(UITextField *)sender
+{
+    [self cellStateForLenght:sender.text.length];
+}
+
+#pragma mark - Private
+
+- (void)showIfBeginEditing
+{
     if (self.cellStateSize == CellStateSizeLow) {
         self.cellStateSize = CellStateSizeMedium;
     }
     [self reloadTableViewCells];
 }
 
-- (void)validateTextFieldDidEndEditing:(UITextField *)textField
+- (void)cellStateForLenght:(NSInteger)lenght
 {
-    
-}
-
-- (void)validateTextFieldDidChangeCharacters:(UITextField *)sender
-{
-    NSInteger lenght = sender.text.length;
     self.cellStateSize = lenght ? CellStateSizeHigh : CellStateSizeMedium;
     [self reloadTableViewCells];
 }
-
-#pragma mark - Private
 
 - (void)registerCell
 {
