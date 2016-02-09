@@ -1,0 +1,349 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A3451FF41C5FACB000D156CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A3451FF31C5FACB000D156CC /* main.m */; };
+		A3451FF71C5FACB000D156CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A3451FF61C5FACB000D156CC /* AppDelegate.m */; };
+		A3451FFA1C5FACB000D156CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3451FF91C5FACB000D156CC /* ViewController.m */; };
+		A3451FFD1C5FACB000D156CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3451FFB1C5FACB000D156CC /* Main.storyboard */; };
+		A3451FFF1C5FACB000D156CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3451FFE1C5FACB000D156CC /* Assets.xcassets */; };
+		A34520021C5FACB000D156CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A34520001C5FACB000D156CC /* LaunchScreen.storyboard */; };
+		A345200D1C5FADA100D156CC /* CheckPassTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A345200B1C5FADA100D156CC /* CheckPassTableViewCell.m */; };
+		A345200E1C5FADA100D156CC /* CheckPassTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A345200C1C5FADA100D156CC /* CheckPassTableViewCell.xib */; };
+		A3F5B4BF1C68CC1C006CC0E9 /* CALayer+CAShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F5B4BE1C68CC1C006CC0E9 /* CALayer+CAShapeLayer.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A3451FEF1C5FACB000D156CC /* Pass_difficulty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pass_difficulty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3451FF31C5FACB000D156CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A3451FF51C5FACB000D156CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A3451FF61C5FACB000D156CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A3451FF81C5FACB000D156CC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A3451FF91C5FACB000D156CC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A3451FFC1C5FACB000D156CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A3451FFE1C5FACB000D156CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A34520011C5FACB000D156CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A34520031C5FACB000D156CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A345200A1C5FADA100D156CC /* CheckPassTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckPassTableViewCell.h; path = CheckPassTableViewCell/CheckPassTableViewCell.h; sourceTree = "<group>"; };
+		A345200B1C5FADA100D156CC /* CheckPassTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckPassTableViewCell.m; path = CheckPassTableViewCell/CheckPassTableViewCell.m; sourceTree = "<group>"; };
+		A345200C1C5FADA100D156CC /* CheckPassTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CheckPassTableViewCell.xib; path = CheckPassTableViewCell/CheckPassTableViewCell.xib; sourceTree = "<group>"; };
+		A3F5B4BD1C68CC1C006CC0E9 /* CALayer+CAShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CALayer+CAShapeLayer.h"; path = "Categories/CALayer+CAShapeLayer/CALayer+CAShapeLayer.h"; sourceTree = "<group>"; };
+		A3F5B4BE1C68CC1C006CC0E9 /* CALayer+CAShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CALayer+CAShapeLayer.m"; path = "Categories/CALayer+CAShapeLayer/CALayer+CAShapeLayer.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A3451FEC1C5FACB000D156CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A3451FE61C5FACB000D156CC = {
+			isa = PBXGroup;
+			children = (
+				A3451FF11C5FACB000D156CC /* Pass_difficulty */,
+				A3451FF01C5FACB000D156CC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A3451FF01C5FACB000D156CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A3451FEF1C5FACB000D156CC /* Pass_difficulty.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A3451FF11C5FACB000D156CC /* Pass_difficulty */ = {
+			isa = PBXGroup;
+			children = (
+				A3F5B4B81C68CAEC006CC0E9 /* Categories */,
+				A34520091C5FAD4300D156CC /* CheckPassTableVIewCell */,
+				A3451FF51C5FACB000D156CC /* AppDelegate.h */,
+				A3451FF61C5FACB000D156CC /* AppDelegate.m */,
+				A3451FF81C5FACB000D156CC /* ViewController.h */,
+				A3451FF91C5FACB000D156CC /* ViewController.m */,
+				A3451FFB1C5FACB000D156CC /* Main.storyboard */,
+				A3451FFE1C5FACB000D156CC /* Assets.xcassets */,
+				A34520001C5FACB000D156CC /* LaunchScreen.storyboard */,
+				A34520031C5FACB000D156CC /* Info.plist */,
+				A3451FF21C5FACB000D156CC /* Supporting Files */,
+			);
+			path = Pass_difficulty;
+			sourceTree = "<group>";
+		};
+		A3451FF21C5FACB000D156CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A3451FF31C5FACB000D156CC /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A34520091C5FAD4300D156CC /* CheckPassTableVIewCell */ = {
+			isa = PBXGroup;
+			children = (
+				A345200A1C5FADA100D156CC /* CheckPassTableViewCell.h */,
+				A345200B1C5FADA100D156CC /* CheckPassTableViewCell.m */,
+				A345200C1C5FADA100D156CC /* CheckPassTableViewCell.xib */,
+			);
+			name = CheckPassTableVIewCell;
+			sourceTree = "<group>";
+		};
+		A3F5B4B81C68CAEC006CC0E9 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A3F5B4B91C68CAF7006CC0E9 /* CALayer+CAShapeLayer */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		A3F5B4B91C68CAF7006CC0E9 /* CALayer+CAShapeLayer */ = {
+			isa = PBXGroup;
+			children = (
+				A3F5B4BD1C68CC1C006CC0E9 /* CALayer+CAShapeLayer.h */,
+				A3F5B4BE1C68CC1C006CC0E9 /* CALayer+CAShapeLayer.m */,
+			);
+			name = "CALayer+CAShapeLayer";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A3451FEE1C5FACB000D156CC /* Pass_difficulty */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A34520061C5FACB000D156CC /* Build configuration list for PBXNativeTarget "Pass_difficulty" */;
+			buildPhases = (
+				A3451FEB1C5FACB000D156CC /* Sources */,
+				A3451FEC1C5FACB000D156CC /* Frameworks */,
+				A3451FED1C5FACB000D156CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pass_difficulty;
+			productName = Pass_difficulty;
+			productReference = A3451FEF1C5FACB000D156CC /* Pass_difficulty.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A3451FE71C5FACB000D156CC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Roman Osadchuk";
+				TargetAttributes = {
+					A3451FEE1C5FACB000D156CC = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 62329HPVX9;
+					};
+				};
+			};
+			buildConfigurationList = A3451FEA1C5FACB000D156CC /* Build configuration list for PBXProject "Pass_difficulty" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A3451FE61C5FACB000D156CC;
+			productRefGroup = A3451FF01C5FACB000D156CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A3451FEE1C5FACB000D156CC /* Pass_difficulty */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A3451FED1C5FACB000D156CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A34520021C5FACB000D156CC /* LaunchScreen.storyboard in Resources */,
+				A3451FFF1C5FACB000D156CC /* Assets.xcassets in Resources */,
+				A3451FFD1C5FACB000D156CC /* Main.storyboard in Resources */,
+				A345200E1C5FADA100D156CC /* CheckPassTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A3451FEB1C5FACB000D156CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3F5B4BF1C68CC1C006CC0E9 /* CALayer+CAShapeLayer.m in Sources */,
+				A3451FFA1C5FACB000D156CC /* ViewController.m in Sources */,
+				A3451FF71C5FACB000D156CC /* AppDelegate.m in Sources */,
+				A3451FF41C5FACB000D156CC /* main.m in Sources */,
+				A345200D1C5FADA100D156CC /* CheckPassTableViewCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A3451FFB1C5FACB000D156CC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3451FFC1C5FACB000D156CC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A34520001C5FACB000D156CC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A34520011C5FACB000D156CC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A34520041C5FACB000D156CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A34520051C5FACB000D156CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A34520071C5FACB000D156CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Pass_difficulty/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "OR.Pass-difficulty";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A34520081C5FACB000D156CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Pass_difficulty/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "OR.Pass-difficulty";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A3451FEA1C5FACB000D156CC /* Build configuration list for PBXProject "Pass_difficulty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A34520041C5FACB000D156CC /* Debug */,
+				A34520051C5FACB000D156CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A34520061C5FACB000D156CC /* Build configuration list for PBXNativeTarget "Pass_difficulty" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A34520071C5FACB000D156CC /* Debug */,
+				A34520081C5FACB000D156CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A3451FE71C5FACB000D156CC /* Project object */;
+}
