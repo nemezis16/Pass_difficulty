@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Tma-LX-Db7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S8l-zw-Amb">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -345,7 +345,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pm3-3C-ugx" userLabel="IndicatorContainer View">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="10"/>
+                                                                    <rect key="frame" x="0.0" y="5" width="600" height="10"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3sP-Px-oyV" userLabel="firstIndicator">
                                                                             <rect key="frame" x="0.0" y="0.0" width="142.5" height="10"/>
@@ -390,9 +390,9 @@
                                                             <constraints>
                                                                 <constraint firstItem="Xia-CO-ib3" firstAttribute="leading" secondItem="Eth-Q0-boD" secondAttribute="leading" id="5T0-Y3-Vzr"/>
                                                                 <constraint firstItem="pm3-3C-ugx" firstAttribute="leading" secondItem="Eth-Q0-boD" secondAttribute="leading" id="Kb7-6E-beP"/>
-                                                                <constraint firstItem="Xia-CO-ib3" firstAttribute="top" secondItem="pm3-3C-ugx" secondAttribute="bottom" constant="10" id="Qsg-Hp-tH9"/>
+                                                                <constraint firstItem="Xia-CO-ib3" firstAttribute="top" secondItem="pm3-3C-ugx" secondAttribute="bottom" constant="5" id="Qsg-Hp-tH9"/>
                                                                 <constraint firstAttribute="trailing" secondItem="pm3-3C-ugx" secondAttribute="trailing" id="jSs-sh-CNk"/>
-                                                                <constraint firstItem="pm3-3C-ugx" firstAttribute="top" secondItem="Eth-Q0-boD" secondAttribute="top" id="lSo-Ov-kws"/>
+                                                                <constraint firstItem="pm3-3C-ugx" firstAttribute="top" secondItem="Eth-Q0-boD" secondAttribute="top" constant="5" id="lSo-Ov-kws"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Xia-CO-ib3" secondAttribute="trailing" id="wV9-vS-Ubh"/>
                                                             </constraints>
                                                         </view>
@@ -460,11 +460,11 @@
                     <connections>
                         <outlet property="commentIndicatorContainerView" destination="Eth-Q0-boD" id="aA9-zV-gdn"/>
                         <outlet property="commentLabel" destination="Xia-CO-ib3" id="XSe-WE-NTd"/>
-                        <outlet property="firstIndicator" destination="3sP-Px-oyV" id="wiz-QW-fXQ"/>
-                        <outlet property="fourthIndicator" destination="UUr-kf-RXO" id="Gcc-dm-CeE"/>
+                        <outlet property="firstIndicatorView" destination="3sP-Px-oyV" id="ppF-VH-PXU"/>
+                        <outlet property="fourthIndicatorView" destination="UUr-kf-RXO" id="Dq3-24-aTP"/>
                         <outlet property="indicatorContainerView" destination="pm3-3C-ugx" id="Jdw-Em-khy"/>
-                        <outlet property="secondIndicator" destination="cS8-bW-Cco" id="KgE-hj-dD9"/>
-                        <outlet property="thirdIndicator" destination="lpj-Nk-IhN" id="1IL-45-38D"/>
+                        <outlet property="secondIndicatorView" destination="cS8-bW-Cco" id="RDj-1N-bss"/>
+                        <outlet property="thirdIndicatorView" destination="lpj-Nk-IhN" id="Zxo-Og-t03"/>
                         <outlet property="validateTextField" destination="vVQ-KU-xTV" id="zAS-Tl-HTH"/>
                     </connections>
                 </tableViewController>

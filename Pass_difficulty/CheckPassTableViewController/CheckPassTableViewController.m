@@ -55,13 +55,6 @@ static CGFloat const strokeAnimationDuration = 0.1f;
     [self addObserverToIndicators];
 }
 
-//
-//self.firstIndicator.layer.name = [[UIColor redColor].description stringByAppendingString:@"0"];
-//[self.indicatorLayersArray addObject:self.firstIndicator.layer];
-//[self.indicatorLayersArray addObject:self.secondIndicator.layer];
-//[self.indicatorLayersArray addObject:self.thirdIndicator.layer];
-//[self.indicatorLayersArray addObject:self.fourthIndicator.layer];
-
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter]removeObserver:self];

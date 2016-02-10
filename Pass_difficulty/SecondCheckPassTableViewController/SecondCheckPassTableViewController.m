@@ -18,10 +18,6 @@ typedef NS_ENUM(NSUInteger, CellStateSize) {
 
 static NSInteger const typeStepForIndicator = 3;
 
-static CGFloat const indicatorInterval = 10.f;
-static CGFloat const indicatorHeight = 8.f;
-static CGFloat const shapeLineWidth = 8.f;
-
 static CGFloat const alphaAnimationDuration = 0.3f;
 static CGFloat const strokeAnimationDuration = 0.1f;
 
@@ -32,10 +28,11 @@ static CGFloat const strokeAnimationDuration = 0.1f;
 @property (weak, nonatomic) IBOutlet UIView *commentIndicatorContainerView;
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 
-@property (weak, nonatomic) IBOutlet UIView *firstIndicator;
-@property (weak, nonatomic) IBOutlet UIView *secondIndicator;
-@property (weak, nonatomic) IBOutlet UIView *thirdIndicator;
-@property (weak, nonatomic) IBOutlet UIView *fourthIndicator;
+@property (weak, nonatomic) IBOutlet UIView *firstIndicatorView;
+@property (weak, nonatomic) IBOutlet UIView *secondIndicatorView;
+@property (weak, nonatomic) IBOutlet UIView *thirdIndicatorView;
+@property (weak, nonatomic) IBOutlet UIView *fourthIndicatorView
+;
 
 @property (strong, nonatomic) NSMutableArray *indicatorLayersArray;
 
@@ -43,6 +40,8 @@ static CGFloat const strokeAnimationDuration = 0.1f;
 @property (strong, nonatomic) NSArray <NSString *> *commentTextArray;
 
 @property (assign, nonatomic) CellStateSize cellStateSize;
+
+@property (assign, nonatomic) NSInteger lenght;
 
 @end
 
@@ -57,12 +56,16 @@ static CGFloat const strokeAnimationDuration = 0.1f;
     
     [self prepareIndicators];
     [self prepareInitialState];
-    [self addObserverToIndicators];
 }
 
-- (void)dealloc
+- (void)viewDidLayoutSubviews
 {
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [super viewDidLayoutSubviews];
+    
+    for (int i = 0; i < self.indicatorLayersArray.count; i++) {
+        CALayer *layer = self.indicatorLayersArray[i];
+        [self updateShapeLayerAtLayer:layer];
+    }
 }
 
 #pragma mark - Accessors
@@ -72,7 +75,6 @@ static CGFloat const strokeAnimationDuration = 0.1f;
     _colorIndicatorArray = colorIndicatorArray ;
     
     [self prepareIndicators];
-    [self updateIndicators];
 }
 
 - (NSArray *)colorIndicatorArray
@@ -102,8 +104,8 @@ static CGFloat const strokeAnimationDuration = 0.1f;
 
 - (IBAction)validateTextFieldDidChangeCharacters:(UITextField *)sender
 {
-    NSInteger lenght = sender.text.length;
-    [self configureIndicatorsWithTextLenght:lenght];
+    self.lenght = sender.text.length;
+    [self configureIndicatorsWithTextLenght:self.lenght];
 }
 
 #pragma mark - UITableViewDataSource
@@ -122,15 +124,6 @@ static CGFloat const strokeAnimationDuration = 0.1f;
     }
 }
 
-#pragma mark - Observer
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
-{
-    if ([keyPath isEqualToString:@"bounds"]){
-        [self updateIndicators];
-    }
-}
-
 #pragma mark - Private
 
 #pragma mark - Perfomance
@@ -138,14 +131,21 @@ static CGFloat const strokeAnimationDuration = 0.1f;
 - (void)prepareIndicators
 {
     self.indicatorLayersArray = [NSMutableArray array];
-    for (int i =0; i < self.colorIndicatorArray.count; i++) {
-        UIColor *color = self.colorIndicatorArray[i];
-        NSString *layerName = [NSString stringWithFormat:@"%@_%i",color.description,i];
-        
-        CALayer *layer = [self indicatorLayerWithName:layerName];
-        [self.indicatorContainerView.layer addSublayer:layer];
-        [self.indicatorLayersArray addObject:layer];
-    }
+    
+    self.firstIndicatorView.layer.name = [[UIColor redColor].description stringByAppendingString:@"_0"];
+    self.secondIndicatorView.layer.name = [[UIColor orangeColor].description stringByAppendingString:@"_1"];
+    self.thirdIndicatorView.layer.name = [[UIColor yellowColor].description stringByAppendingString:@"_2"];
+    self.fourthIndicatorView.layer.name = [[UIColor greenColor].description stringByAppendingString:@"_3"];
+    
+    [self configureIndicatorView:self.firstIndicatorView];
+    [self configureIndicatorView:self.secondIndicatorView];
+    [self configureIndicatorView:self.thirdIndicatorView];
+    [self configureIndicatorView:self.fourthIndicatorView];
+    
+    [self.indicatorLayersArray addObject:self.firstIndicatorView.layer];
+    [self.indicatorLayersArray addObject:self.secondIndicatorView.layer];
+    [self.indicatorLayersArray addObject:self.thirdIndicatorView.layer];
+    [self.indicatorLayersArray addObject:self.fourthIndicatorView.layer];
 }
 
 - (void)prepareInitialState
@@ -168,6 +168,14 @@ static CGFloat const strokeAnimationDuration = 0.1f;
     [self reloadTableViewCells];
 }
 
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    if (flag) {
+        self.cellStateSize = self.lenght ? CellStateSizeHigh : CellStateSizeMedium;
+        [self reloadTableViewCells];
+    }
+}
+
 - (void)configureIndicatorsWithTextLenght:(NSInteger)lenght
 {
     if (lenght && !self.commentLabel.layer.opacity) {
@@ -178,27 +186,6 @@ static CGFloat const strokeAnimationDuration = 0.1f;
     
     [self progressAnimationsWithTextLenght:lenght];
     [self regressAnimationsWithTextLenght:lenght];
-    
-    self.cellStateSize = lenght ? CellStateSizeHigh : CellStateSizeMedium;
-    [self reloadTableViewCells];
-}
-
-- (void)updateIndicators
-{
-    NSInteger indicatorCount = self.colorIndicatorArray.count;
-    CGFloat quartPart = CGRectGetWidth(self.indicatorContainerView.frame)/ self.indicatorLayersArray.count;
-    
-    CGFloat yPoint = CGRectGetHeight(self.indicatorContainerView.bounds) / 2;
-    CGFloat indicatorWidth = quartPart - ((indicatorCount - 1) * indicatorInterval /  indicatorCount);
-    
-    for (int i = 0; i < self.indicatorLayersArray.count; i++) {
-        CALayer *layer = self.indicatorLayersArray[i];
-        if ([self.indicatorContainerView.layer.sublayers containsObject:layer]) {
-            CGRect layerFrame = CGRectMake((indicatorWidth + indicatorInterval) * i, yPoint, indicatorWidth, indicatorHeight);
-            layer.frame = layerFrame;
-            [self updateShapeLayerAtLayer:layer];
-        }
-    }
 }
 
 - (void)updateShapeLayerAtLayer:(CALayer *)layer
@@ -243,12 +230,19 @@ static CGFloat const strokeAnimationDuration = 0.1f;
     pathLayer.frame = layer.bounds;
     pathLayer.strokeColor = color;
     pathLayer.path = [self bezierPathForRect:layer.bounds].CGPath;
-    pathLayer.lineWidth = shapeLineWidth;
+    pathLayer.lineWidth = layer.bounds.size.height;
     
     return pathLayer;
 }
 
 #pragma mark - ManageAnimations
+
+- (void)configureIndicatorView:(UIView *)view
+{
+    view.layer.borderColor = [UIColor colorWithWhite:0.5f alpha:0.3f].CGColor;
+    view.backgroundColor = [UIColor colorWithWhite:0.8f alpha:0.1f];
+    view.layer.borderWidth = 0.5f;
+}
 
 - (void)addAnimationToShowIndicators:(BOOL)show
 {
@@ -301,7 +295,7 @@ static CGFloat const strokeAnimationDuration = 0.1f;
         UIColor *color = self.colorIndicatorArray[countIndicator];
         self.commentLabel.textColor = color;
         
-        for (int i = 0; i < self.indicatorLayersArray.count; i++) {
+        for (int i = 0; i <= countIndicator ; i++) {
             CALayer *layer = self.indicatorLayersArray[i];
             UIColor *color = self.colorIndicatorArray[i];
             [self strokeEndAnimationWithIndicatorLayer:layer CGColor:color.CGColor];
@@ -321,10 +315,12 @@ static CGFloat const strokeAnimationDuration = 0.1f;
         [self strokeStartAnimationWithIndicatorLayer:self.indicatorLayersArray[countIndicator]];
         
         for (int i = 0; i < self.indicatorLayersArray.count; i++) {
-            if (i > countIndicator) {
+            if (i >= countIndicator) {
                 [self strokeStartAnimationWithIndicatorLayer:self.indicatorLayersArray[i]];
             }
         }
+        
+#warning fix!!!
         if (!lenght) {
             self.commentLabel.text = @"";
             for (int i = 0; i < self.indicatorLayersArray.count; i++) {
@@ -360,11 +356,6 @@ static CGFloat const strokeAnimationDuration = 0.1f;
 }
 
 #pragma mark - AdditionalMethods
-
-- (void)addObserverToIndicators
-{
-    [self.indicatorContainerView addObserver:self forKeyPath:@"bounds" options:NSKeyValueObservingOptionNew context:nil];
-}
 
 - (void)reloadTableViewCells
 {
